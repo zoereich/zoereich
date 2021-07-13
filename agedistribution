@@ -1,0 +1,33 @@
+ggplot(data = agedistributiondataZR071321) + 
+  geom_bar(mapping = aes(x = Age))
+ggplot(data = diamonds) + 
+  stat_count(mapping = aes(x = cut)
+  
+ggplot(data = agedistributiondataZR071321) + 
+  geom_bar(mapping = aes(x = Age, fill = Urbanization_Level))
+  ### keep messing up the scale for x values goes up by 10 20 30 40 50 rather than 1 2 3 4 5?? What do I do?
+bar <- ggplot(data = agedistributiondataZR071321) + 
++     geom_bar(
++         mapping = aes(x = Age, fill = Urbanization_Level), 
++         show.legend = TRUE,
++         width = 1
++     ) + 
++     theme(aspect.ratio = 1) +
++     labs(x = NULL, y = NULL)
+bar
+###shows graph but scale still wrong grrr
+
+  ggplot(data = agedistributiondataZR071321) + 
+    geom_bar(mapping = aes(x = Age, fill = Urbanization_Level)) + 
+    geom_point() +
+    xlim(0, 66)
+###gazillionth try 
+ggplot(data = agedistributiondataZR071321) + 
+  geom_bar(mapping = aes(x = Age, fill = Urbanization_Level)) + 
+  geom_point() + 
+  scale_x_1()
+###nope
+base <- ggplot(agedistributionZR071321, aes(displ, Age)) + geom_point()
+###another try
+ggplot(agedistributiondata071321, aes(displ, x=Age, colour = Urbanization_Level)) + 
+  geom_freqpoly(binwidth = 0.5)
