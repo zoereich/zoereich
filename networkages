@@ -1,0 +1,42 @@
+got_palette <- c("#1A5878", "#C44237", "#AD8941", "#E99093", "#50594B")
+ggraph(gotS1,layout = "stress")+
+  geom_edge_link0(aes(edge_width = Family_relation_to_subject_#),edge_colour = "grey66")+
+  geom_node_point(aes(fill = Urbanization_Level,size = size),shape=21)+
+  geom_node_text(aes(filter = size >= 26, label = name),family="serif")+
+  scale_fill_manual(values = got_palette)+
+  scale_edge_width(range = c(0.2,3))+
+  scale_size(range = c(1,6))+
+  theme_graph()+
+  theme(legend.position = "none")
+  ###nope
+  ggraph(ga,"stress",bbox = 15)+
+  geom_edge_link2(aes(edge_colour = node.position),edge_width = 0.5)+
+  geom_node_point(aes(fill = Family_relation_to_subject_#),shape = 21,size = 3)+
+  geom_node_text(aes(label = Subject_ID,size = degree(ga)),
+                 family = "serif",repel = TRUE)+
+  scale_edge_colour_brewer(palette = "Set1")+
+  scale_fill_manual(values=c("F" = "#EEB422","M" = "#424242","grey66"))+
+  scale_size(range=c(2,5),guide = FALSE)+
+  theme_graph()+
+  theme(legend.position = "bottom")
+  ###noooo
+  set.seed(10052016)
+ggplot(data = familyrelationsZR071321, aes(Family_relation_to_subject_# = Family_relation_to_subject_#, Subject_ID = Subject_id)) +
+  geom_net(aes(colour = Subject_ID), layout.alg = "kamadakawai", 
+           size = 2, labelon = TRUE, vjust = -0.6, ecolour = "grey60",
+           directed =FALSE, fontsize = 3, ealpha = 0.5) +
+  scale_colour_manual(values = c("#FF69B4", "#0099ff")) +
+  xlim(c(-0.05, 1.05)) +
+  theme_net() +
+  theme(legend.position = "bottom")
+  ###over here
+  ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = "grey50", alpha = 0.5) +
+  geom_nodes(aes(x, y, color = family), size = 3) +
+  geom_nodelabel_repel(aes(label = vertex.names),
+                       box.padding = unit(1, "lines"),
+                       data = function(x) { x[ x$family == "a", ]}) +
+  scale_color_brewer(palette = "Set1") +
+  theme_blank()
+  ##here
+  
